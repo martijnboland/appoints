@@ -9,6 +9,7 @@
     "express": "3.0.3",
     "jade": "*",
     "connect-assets": "2.3.3",
-    "less": "*"
+    "less": "*",
+    "mongoose": "3.4.0"
   }
 }

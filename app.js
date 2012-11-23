@@ -4,7 +4,9 @@
  */
 var express = require('express')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , env = require('./config/environment')
+  , mongoose = require('mongoose');
 
 var app = express();
 
@@ -22,9 +24,11 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-require('./config/environment')(app, express);
+env.configure(app, express);
 
 require('./config/routes')(app);
+
+mongoose.connect(env.settings.connectionString);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
