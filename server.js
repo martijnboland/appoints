@@ -19,8 +19,8 @@ app.configure(function(){
   app.use(express.cookieParser('raahhh raahhh'));
   app.use(express.session());
   app.use(app.router);
-  app.use(require('connect-assets')());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(require('connect-assets')({ src: 'app' }));
+  app.use(express.static(path.join(__dirname, 'app')));
 });
 
 env.configure(app, express);
@@ -30,5 +30,5 @@ require('./config/routes')(app);
 mongoose.connect(env.settings.connectionString);
 
 http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
+  console.log('Express server listening on port ' + app.get('port'));
 });
