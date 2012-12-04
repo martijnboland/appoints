@@ -1,4 +1,5 @@
 var index = require('../routes/index');
+var account = require('../routes/api/account');
 
 module.exports = function(app) {
 
@@ -6,6 +7,7 @@ module.exports = function(app) {
   app.get('/', index.index);
 
   // Api
+  app.post('/api/account', account.create);
 
   // Catch all route -- If a request makes it this far, it will be passed to angular.
   // This allows for html5mode to be set to true. E.g.

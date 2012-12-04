@@ -2,17 +2,15 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var passport = require('passport');
+//var passport = require('passport');
 var bcrypt = require('bcrypt');
 
 // Define schema
 var UserSchema = new Schema({
   uid: { type: String, unique: true },
-  name : { 
-    first: { type: String, required: true }, 
-    last: { type: String, required: true }
-  },
-  provider: {} type: String, required: true },
+  email: { type: String, required: true },
+  name: { type: String, required: true },
+  provider: { type: String, required: true },
   salt: { type: String, required: true },
   passwordHash: { type: String, required: true }
 });

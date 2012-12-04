@@ -1,5 +1,5 @@
 appointsApp.controller('AccountController', 
-  ['$scope', '$location', function AccountController($scope, $location) {
+  ['$scope', '$location', '$http', function AccountController($scope, $location, $http) {
 
   $scope.login = function (userdata, returnUrl) {
 
@@ -7,7 +7,9 @@ appointsApp.controller('AccountController',
   }
 
   $scope.register = function (userdata) {
-
-    $location.url('/');
+    $http.post('/api/account', userdata)
+      .success(function(data) {
+        $location.url('/');   
+      });
   }
 }]);
