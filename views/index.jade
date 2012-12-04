@@ -9,7 +9,7 @@ html(ng-app="appointsApp")
 
     div.container
       div.content
-        h2 {{pageTitle}}
+        h2(ng-bind="pageTitle")
         ng-view
 
       div.footer
