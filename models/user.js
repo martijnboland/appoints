@@ -7,7 +7,7 @@ var bcrypt = require('bcrypt');
 
 // Define schema
 var UserSchema = new Schema({
-  uid: { type: String, unique: true },
+  userId: { type: String, required: true, index: { unique: true } },
   email: { type: String, required: true },
   name: { type: String, required: true },
   provider: { type: String, required: true },
@@ -15,35 +15,48 @@ var UserSchema = new Schema({
   passwordHash: { type: String, required: true }
 });
 
-UserSchema
-  .virtual('password')
-  .get(function () {
-    return this._password;
-  })
-  .set(function (password) {
-    this._password = password;
-    var salt = this.salt = bcrypt.genSaltSync(10);
-    this.passwordHash = bcrypt.hashSync(password, salt);
-  });
+UserSchema.virtual('password')
+.get(function() {
+  return this._password;
+})
+.set(function(value) {
+  this._password = value;
+  this.salt = bcrypt.gen_salt_sync(12);
+  this.passwordHash = bcrypt.encrypt_sync(value, this.salt);
+});
 
-// Not entirely sure why the async version isn't working...
-//.virtual('password')
-//.get(function() {
-//  return this._password;
-//})
-//.set(function(password) {
-//  this._password = password;
-//  bcrypt.genSalt(10, function(err, salt) {
-//    this.salt = salt;
-//    bcrypt.hash(password, salt, function(err, hash) {
-//      this.hash = hash;
-//    });
-//  });
-//});
+UserSchema.virtual('passwordConfirmation')
+.get(function() {
+  return this._passwordConfirmation;
+})
+.set(function(value) {
+  this._passwordConfirmation = value;
+});
+
+UserSchema.path('passwordHash').validate(function(v) {
+  if (this._password || this._passwordConfirmation) {
+    if (this._password !== this._passwordConfirmation) {
+      this.invalidate('passwordConfirmation', 'must match confirmation.');
+    }
+  }
+  
+  if (this.isNew && !this._password) {
+    this.invalidate('password', 'required');
+  }
+}, null);
 
 UserSchema.method('verifyPassword', function(password, callback) {
   bcrypt.compare(password, this.passwordHash, callback);
 });
+
+UserSchema.methods.setPassword = function setPassword (password, confirmpassword) {
+  if (password === confirmpassword) {
+    this.password = confirmpassword;
+    return true;
+  }
+  this.invalidate('password', new Error('Password mismatch'));
+  return false;
+}
 
 UserSchema.static('authenticate', function(uid, password, callback) {
   this.findOne({ uid: uid }, function(err, user) {

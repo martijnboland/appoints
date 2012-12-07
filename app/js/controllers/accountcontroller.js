@@ -1,5 +1,5 @@
 appointsApp.controller('AccountController', 
-  ['$scope', '$location', '$http', function AccountController($scope, $location, $http) {
+  ['$scope', '$location', '$http', 'flash', function AccountController($scope, $location, $http, flash) {
 
   $scope.login = function (userdata, returnUrl) {
 
@@ -10,6 +10,9 @@ appointsApp.controller('AccountController',
     $http.post('/api/account', userdata)
       .success(function(data) {
         $location.url('/');   
+      })
+      .error(function(data) {
+        flash.add(data, 'error');
       });
   }
 }]);
