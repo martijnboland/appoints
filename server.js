@@ -5,9 +5,12 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , env = require('./config/environment')
-  , mongoose = require('mongoose');
+  , mongoose = require('mongoose')
+  , passport = require('passport');
 
 var app = express();
+
+require('./config/passport')();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -19,6 +22,8 @@ app.configure(function(){
   app.use(express.cookieParser('raahhh raahhh'));
   app.use(express.session());
   app.use(app.router);
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(require('connect-assets')({ src: 'app' }));
   app.use(express.static(path.join(__dirname, 'app')));
 });

@@ -11,7 +11,9 @@
     "connect-assets": "2.3.3",
     "less": "*",
     "mongoose": "3.4.0",
-    "bcrypt": "0.7.x"
+    "bcrypt": "0.7.x",
+    "passport": "*",
+    "passport-local": "*"
   },
   "engines": {
     "node": "0.8.x",

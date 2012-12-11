@@ -21,8 +21,8 @@ UserSchema.virtual('password')
 })
 .set(function(value) {
   this._password = value;
-  this.salt = bcrypt.gen_salt_sync(12);
-  this.passwordHash = bcrypt.encrypt_sync(value, this.salt);
+  this.salt = bcrypt.genSaltSync(12);
+  this.passwordHash = bcrypt.hashSync(value, this.salt);
 });
 
 UserSchema.virtual('passwordConfirmation')
@@ -58,8 +58,8 @@ UserSchema.methods.setPassword = function setPassword (password, confirmpassword
   return false;
 }
 
-UserSchema.static('authenticate', function(uid, password, callback) {
-  this.findOne({ uid: uid }, function(err, user) {
+UserSchema.static('authenticate', function(userId, password, callback) {
+  this.findOne({ userId: userId }, function(err, user) {
       if (err) { return callback(err); }
       if (!user) { return callback(null, false); }
       user.verifyPassword(password, function(err, passwordCorrect) {

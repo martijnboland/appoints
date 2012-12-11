@@ -13,8 +13,4 @@ appointsApp.controller('FlashController', ['$scope', 'flash', function FlashCont
     $scope.flashMessages = [];
   });
 
-  $scope.$on('$routeChangeSuccess', function (scope, next, current) {
-    $scope.flashMessages = [];
-  });
-
 }]);

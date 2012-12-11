@@ -1,7 +1,6 @@
 
 // Declare application level module which depends on additional filters and services (most of them are custom)
-var appointsApp = angular.module('appointsApp', [
-]);
+var appointsApp = angular.module('appointsApp', ['appoints.infrastructure']);
 
 // Configure application $route, $location and $http services.
 appointsApp.config([

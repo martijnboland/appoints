@@ -1,10 +1,14 @@
 var index = require('../routes/index');
 var account = require('../routes/api/account');
+var passport = require('passport');
 
 module.exports = function(app) {
 
   // Index
   app.get('/', index.index);
+
+  // Login
+  app.post('/api/account/login', passport.authenticate('local'), account.login);
 
   // Api
   app.post('/api/account', account.create);
