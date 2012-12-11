@@ -2,7 +2,7 @@ appointsApp.controller('AccountController',
   ['$scope', '$location', '$http', 'flash', function AccountController($scope, $location, $http, flash) {
 
   $scope.login = function (userdata, returnUrl) {
-    $http.post('/api/account/login', { username: userdata.email, password: userdata.password })
+    $http.post('/api/account/login', userdata)
       .success(function(data) {
         $location.url(returnUrl || '/');
       })

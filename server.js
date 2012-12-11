@@ -21,11 +21,11 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser('raahhh raahhh'));
   app.use(express.session());
-  app.use(app.router);
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(require('connect-assets')({ src: 'app' }));
   app.use(express.static(path.join(__dirname, 'app')));
+  app.use(app.router);
 });
 
 env.configure(app, express);

@@ -4,7 +4,9 @@ var User = require('../models/user');
 
 module.exports = function () {
 
-  passport.use(new LocalStrategy(
+  passport.use(new LocalStrategy({ 
+      usernameField: 'email' 
+    }, 
     function(email, password, done) {
       User.authenticate(email, password, function (err, user) {
         if (err) { 

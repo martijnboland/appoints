@@ -1,6 +1,9 @@
 
 // Declare application level module which depends on additional filters and services (most of them are custom)
-var appointsApp = angular.module('appointsApp', ['appoints.infrastructure']);
+var appointsApp = angular.module('appointsApp', [
+  'appoints.infrastructure',
+  'http-auth-interceptor'
+]);
 
 // Configure application $route, $location and $http services.
 appointsApp.config([

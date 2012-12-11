@@ -13,6 +13,10 @@ exports.create = function(req, res){
 };
 
 exports.login = function(req, res) {
+  return res.send('200', req.session);
+}
+
+exports.me = function(req, res) {
   return res.send('200', req.user);
 }
 
