@@ -14,6 +14,9 @@ angular.module('appoints.infrastructure', [])
               flash.add(error.message, 'error');
             });
           }
+          else if (response.status === 401) {
+            console.log(response);
+          }
           else {
             console.log(response.data)
             flash.add('An unknown error has ocurred', 'error');

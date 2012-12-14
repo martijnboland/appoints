@@ -14,7 +14,7 @@ appointsApp.factory('flash', ['$rootScope', function ($rootScope) {
       flashes.push(flash);
 
       // tell child scope that this flash has been added
-      $rootScope.$broadcast('flash.add', flash);
+      $rootScope.$broadcast('event:flash.add', flash);
     },
 
     /**
@@ -29,7 +29,7 @@ appointsApp.factory('flash', ['$rootScope', function ($rootScope) {
      * clear removes all flashes
      */
     clear: function () {
-      $rootScope.$broadcast('flash.clear', true);
+      $rootScope.$broadcast('event:flash.clear', true);
       flashes = [];
     },
 
@@ -39,7 +39,7 @@ appointsApp.factory('flash', ['$rootScope', function ($rootScope) {
      * @return {Array}
      */
     getAll: function () {
-      $rootScope.$broadcast('flash.remove');
+      $rootScope.$broadcast('event:flash.remove');
       var f = angular.copy(flashes);
       flashes = [];
       return f;

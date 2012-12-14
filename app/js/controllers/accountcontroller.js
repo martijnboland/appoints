@@ -1,15 +1,14 @@
 appointsApp.controller('AccountController', 
-  ['$scope', '$location', '$http', 'flash', function AccountController($scope, $location, $http, flash) {
+  ['$scope', '$location', '$http', 'flash', 'usersession', function AccountController($scope, $location, $http, flash, usersession) {
 
-  $scope.login = function (userdata, returnUrl) {
-    $http.post('/api/account/login', userdata)
-      .success(function(data) {
-        $location.url(returnUrl || '/');
-      })
+  $scope.login = function (loginData) {
+    usersession.login(loginData).success(function(data) {
+      $location.url('/');
+    });
   }
 
-  $scope.register = function (userdata) {
-    $http.post('/api/account', userdata)
+  $scope.register = function (userData) {
+    $http.post('/api/account', userData)
       .success(function(data) {
         flash.add('You have registered successfully', 'success');
         $location.url('/');   

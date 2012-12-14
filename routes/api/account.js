@@ -17,7 +17,7 @@ exports.login = function(req, res) {
 }
 
 exports.me = function(req, res) {
-  return res.send('200', req.user);
+  return res.send('200', { "userId": req.user.userId, "name": req.user.name, "email": req.user.email, "provider": req.user.provider });
 }
 
 exports.logout = function (req, res) {

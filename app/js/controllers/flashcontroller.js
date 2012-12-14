@@ -5,11 +5,11 @@ appointsApp.controller('FlashController', ['$scope', 'flash', function FlashCont
     return 'alert alert-' + level;
   }
 
-  $scope.$on('flash.add', function() {
+  $scope.$on('event:flash.add', function() {
     $scope.flashMessages = flash.getAll();
   });
 
-  $scope.$on('flash.clear', function() {
+  $scope.$on('event:flash.clear', function() {
     $scope.flashMessages = [];
   });
 
