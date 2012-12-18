@@ -53,7 +53,7 @@ appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', functi
     $http.get('/api/account/logout').success(function (data) {
       currentSession = new Session();
       $rootScope.$broadcast('event:currentSessionChanged', currentSession);
-      callback();
+      callback(currentSession);
     });
   }
 

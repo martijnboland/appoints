@@ -7,10 +7,11 @@ appointsApp.controller('NavbarController', ['$scope', '$location', 'usersession'
     return $location.path() === routeName;
   };
 
-  $scope.logout = function() {
+  $scope.logout = function(callback) {
     usersession.logout(function() {
       flash.add('Logged out successfully', 'success');
       $location.url('/');
+      callback();
     });
   }
 
