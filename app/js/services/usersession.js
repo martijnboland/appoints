@@ -18,9 +18,14 @@ appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', functi
   function refreshCurrent() {
     $http.get('/api/account/me')
       .success(function(result) {
-        currentSession.userId = result.userId;
-        currentSession.name = result.name;
-        currentSession.isAuthenticated = true;
+        if (result.isAuthenticated === "true") {
+          currentSession.userId = result.userId;
+          currentSession.name = result.name;
+          currentSession.isAuthenticated = true;
+        }
+        else {
+          currentSession = new Session();
+        }
         $rootScope.$broadcast('event:currentSessionChanged', currentSession);
       })
       .error(function(err) {

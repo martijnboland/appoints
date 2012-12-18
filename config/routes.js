@@ -11,7 +11,7 @@ module.exports = function(app) {
   // Authentication and sign up
   app.post('/api/account/login', passport.authenticate('local'), account.login);
   app.post('/api/account', account.create);
-  app.get('/api/account/me', middleware.ensureAuthenticated, account.me);
+  app.get('/api/account/me', account.me);
   app.get('/api/account/logout', middleware.ensureAuthenticated, account.logout)
 
   // Catch all route -- If a request makes it this far, it will be passed to angular.

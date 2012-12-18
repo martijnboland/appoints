@@ -17,7 +17,17 @@ exports.login = function(req, res) {
 }
 
 exports.me = function(req, res) {
-  return res.send('200', { "userId": req.user.userId, "name": req.user.name, "email": req.user.email, "provider": req.user.provider });
+  if (req.user) {
+    return res.send('200', { 
+      "isAuthenticated": "true", 
+      "userId": req.user.userId, 
+      "name": req.user.name, 
+      "email": req.user.email, 
+      "provider": req.user.provider });
+  }
+  return res.send('200', {
+    "isAuthenticated": "false"
+  })
 }
 
 exports.logout = function (req, res) {
