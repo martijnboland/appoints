@@ -19,6 +19,9 @@ appointsApp.config([
       .when('/', {templateUrl : '/partials/home.html'})
       .when('/about', {templateUrl : '/partials/about.html'})
 
+      // Appointments
+      .when('/appointments', { auth: true, templateUrl : '/partials/appointments/list.html' })
+
       // Authentication
       .when('/register', {templateUrl : '/partials/account/register.html'})
       .when('/login', {templateUrl : '/partials/account/login.html'})

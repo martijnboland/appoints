@@ -1,6 +1,7 @@
 var middleware = require('../routes/middleware');
 var index = require('../routes/index');
 var account = require('../routes/api/account');
+var appointments = require('../routes/api/appointments');
 var passport = require('passport');
 
 module.exports = function(app) {
@@ -12,7 +13,10 @@ module.exports = function(app) {
   app.post('/api/account/login', passport.authenticate('local'), account.login);
   app.post('/api/account', account.create);
   app.get('/api/account/me', account.me);
-  app.get('/api/account/logout', middleware.ensureAuthenticated, account.logout)
+  app.get('/api/account/logout', middleware.ensureAuthenticated, account.logout);
+
+  // Apointments
+  app.get('/api/appointments', middleware.ensureAuthenticated, appointments.list);
 
   // Catch all route -- If a request makes it this far, it will be passed to angular.
   // This allows for html5mode to be set to true. E.g.
