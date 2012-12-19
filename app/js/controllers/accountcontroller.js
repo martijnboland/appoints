@@ -2,9 +2,7 @@ appointsApp.controller('AccountController',
   ['$scope', '$location', '$http', 'flash', 'usersession', function AccountController($scope, $location, $http, flash, usersession) {
 
   $scope.login = function (loginData) {
-    usersession.login(loginData).success(function(data) {
-      $location.url('/');
-    });
+    usersession.login(loginData);
   }
 
   $scope.register = function (userData) {

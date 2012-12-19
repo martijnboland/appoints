@@ -1,11 +1,12 @@
 
-appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', function ($rootScope, $http, authService) {
+appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authService', function ($rootScope, $http, $route, authService) {
 
   var defaultSession = {
     userId: '',
     name: '',
     isAuthenticated: false,
-    isAdmin: false
+    isAdmin: false,
+    nextUrl: ''
   };
 
   function Session() {
@@ -15,7 +16,7 @@ appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', functi
 
   var currentSession = new Session();
 
-  function refreshCurrent() {
+  function refreshCurrent(callback, error) {
     $http.get('/api/account/me')
       .success(function(result) {
         if (result.isAuthenticated) {
@@ -24,9 +25,14 @@ appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', functi
           currentSession.isAuthenticated = true;
         }
         else {
-          currentSession = new Session();
+          currentSession.userId = '';
+          currentSession.name = '';
+          currentSession.isAuthenticated = false;
         }
         $rootScope.$broadcast('event:currentSessionChanged', currentSession);
+        if (callback !== undefined) {
+          callback();          
+        }
       })
       .error(function(err) {
         console.log(err);
@@ -42,8 +48,9 @@ appointsApp.factory('usersession', ['$rootScope', '$http', 'authService', functi
     var promise = $http.post('/api/account/login', loginData);
     promise.then(function (result) {
       // Authentication was successful. Get the user data.
-      authService.loginConfirmed();
-      refreshCurrent();
+      refreshCurrent(function() {
+        authService.loginConfirmed();
+      });
       return result;
     });
     return promise;
