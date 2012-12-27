@@ -22,9 +22,10 @@ appointsApp.config([
       // Appointments
       .when('/appointments', { auth: true, templateUrl : '/partials/appointments/list.html' })
 
-      // Authentication
+      // Authentication/signup
       .when('/register', {templateUrl : '/partials/account/register.html'})
       .when('/login', {templateUrl : '/partials/account/login.html'})
+      .when('/confirmsuccess', {templateUrl : '/partials/account/confirmsuccess.html'})
 
       // 404
       .when('/404', {templateUrl : '/partials/errors/404.html'})

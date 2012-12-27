@@ -12,7 +12,8 @@ var UserSchema = new Schema({
   name: { type: String, required: true },
   provider: { type: String, required: true },
   salt: { type: String, required: true },
-  passwordHash: { type: String, required: true }
+  passwordHash: { type: String, required: true },
+  isPending: { type: Boolean, default: true }
 });
 
 UserSchema.virtual('password')
@@ -61,7 +62,7 @@ UserSchema.methods.setPassword = function setPassword (password, confirmpassword
 UserSchema.static('authenticate', function(userId, password, callback) {
   this.findOne({ userId: userId }, function(err, user) {
       if (err) { return callback(err); }
-      if (!user) { return callback(null, false); }
+      if (!user || user.isPending) { return callback(null, false); }
       user.verifyPassword(password, function(err, passwordCorrect) {
         if (err) { return callback(err); }
         if (!passwordCorrect) { return callback(null, false); }

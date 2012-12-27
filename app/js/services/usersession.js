@@ -1,5 +1,5 @@
 
-appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authService', function ($rootScope, $http, $route, authService) {
+appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authService', 'flash', function ($rootScope, $http, $route, authService, flash) {
 
   var defaultSession = {
     userId: '',
@@ -52,7 +52,13 @@ appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authServic
         authService.loginConfirmed();
       });
       return result;
+    },
+    function (result) {
+      // Error
+      flash.add('Unable to login', 'error');
+      return $q.reject(result);
     });
+
     return promise;
   }
 

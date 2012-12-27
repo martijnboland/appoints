@@ -13,7 +13,8 @@
     "mongoose": "3.4.0",
     "bcrypt": "0.7.x",
     "passport": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "nodemailer": "~0.3.37"
   },
   "engines": {
     "node": "0.8.x",

@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.post('/api/account', account.create);
   app.get('/api/account/me', account.me);
   app.get('/api/account/logout', middleware.ensureAuthenticated, account.logout);
+  app.get('/api/account/confirm/:id', account.confirm);
 
   // Apointments
   app.get('/api/appointments', middleware.ensureAuthenticated, appointments.list);
