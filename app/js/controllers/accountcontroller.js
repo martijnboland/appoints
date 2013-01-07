@@ -13,7 +13,7 @@ appointsApp.controller('AccountController',
       });
   }
 
-  $scope.authProviders = ['facebook', 'twitter', 'google'];
+  $scope.authProviders = ['facebook', 'google', 'twitter'];
 
   $scope.authenticate = function (providerName) {
     var authUrl = '/auth/' + providerName;
