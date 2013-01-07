@@ -1,8 +1,7 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
-//var passport = require('passport');
+var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 
 // Define schema
@@ -57,6 +56,15 @@ UserSchema.methods.setPassword = function setPassword (password, confirmpassword
   }
   this.invalidate('password', new Error('Password mismatch'));
   return false;
+}
+
+UserSchema.methods.setRandomPassword = function setRandomPassword (callback) {
+  var user = this;
+  crypto.randomBytes(24, function(err, buf) {
+    user.password = buf.toString('hex');
+    user.passwordConfirmation = user.password;
+    callback();
+  });
 }
 
 UserSchema.static('authenticate', function(userId, password, callback) {

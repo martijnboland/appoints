@@ -10,6 +10,8 @@ var express = require('express')
 
 var app = express();
 
+env.configure(app, express);
+
 require('./config/passport')();
 
 app.configure(function(){
@@ -26,8 +28,6 @@ app.configure(function(){
   app.use(passport.session());
   app.use(app.router);
 });
-
-env.configure(app, express);
 
 require('./config/routes')(app);
 

@@ -12,4 +12,11 @@ appointsApp.controller('AccountController',
         $location.url('/');   
       });
   }
+
+  $scope.authProviders = ['facebook', 'twitter', 'google'];
+
+  $scope.authenticate = function (providerName) {
+    var authUrl = '/auth/' + providerName;
+    window.top.location.href = authUrl;
+  }
 }]);

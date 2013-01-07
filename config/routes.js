@@ -16,7 +16,11 @@ module.exports = function(app) {
   app.get('/api/account/logout', middleware.ensureAuthenticated, account.logout);
   app.get('/api/account/confirm/:id', account.confirm);
 
-  // Apointments
+  // Authentication provider routes
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', { scope: 'email', successRedirect: '/', failureRedirect: '/login' }));
+
+  // Appointments
   app.get('/api/appointments', middleware.ensureAuthenticated, appointments.list);
 
   // Catch all route -- If a request makes it this far, it will be passed to angular.
