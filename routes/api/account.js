@@ -16,7 +16,7 @@ exports.create = function(req, res){
       fullName: user.name,
       confirmationUrl: 'http://' + localReq.headers.host + '/api/account/confirm/' + user.id
     });
-    return res.send('201', user);
+    res.send('201', user);
   });
 };
 
@@ -26,17 +26,17 @@ exports.confirm = function(req, res) {
     user.isPending = false;
     user.save(function(err, user) {
       if (! err) {
-        return res.redirect('/confirmsuccess');
+        res.redirect('/confirmsuccess');
       }
       else {
-        return res.send('400', err);
+        res.send('400', err);
       }
     })
   });
 }
 
 exports.login = function(req, res) {
-  return res.send('200', req.session);
+  res.send('200', req.session);
 }
 
 exports.me = function(req, res) {
@@ -48,7 +48,7 @@ exports.me = function(req, res) {
       "email": req.user.email, 
       "provider": req.user.provider });
   }
-  return res.send('200', {
+  res.send('200', {
     "isAuthenticated": false,
     "name": "Anonymous user"
   })

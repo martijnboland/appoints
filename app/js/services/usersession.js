@@ -40,7 +40,9 @@ appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authServic
   }
 
   function current() {
-    refreshCurrent();
+    if (! currentSession.isAuthenticated) {
+      refreshCurrent();
+    }
     return currentSession;
   }
 

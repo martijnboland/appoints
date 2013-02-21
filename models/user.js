@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 
-// Define schema
+var ROLES = {
+  admin: 'admin',
+  user: 'user'
+};
+
 var UserSchema = new Schema({
   userId: { type: String, required: true, index: { unique: true } },
   email: { type: String, required: true },
@@ -12,7 +16,9 @@ var UserSchema = new Schema({
   provider: { type: String, required: true },
   salt: { type: String, required: true },
   passwordHash: { type: String, required: true },
-  isPending: { type: Boolean, default: true }
+  isPending: { type: Boolean, default: true },
+  isActive: { type: Boolean, default: true },
+  roles: { type: [String], default: [ROLES.user]}
 });
 
 UserSchema.virtual('password')
