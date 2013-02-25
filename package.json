@@ -8,7 +8,7 @@
   "dependencies": {
     "express": "3.0.3",
     "jade": "*",
-    "connect-assets": "git://github.com/martijnboland/connect-assets.git#master",
+    "connect-assets": "git://github.com/adunkman/connect-assets.git",
     "less": "*",
     "mongoose": "3.4.0",
     "bcrypt": "0.7.x",
