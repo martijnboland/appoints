@@ -1,0 +1,41 @@
+doctype 5
+html
+  head
+    title Appoints - Install
+    != css('style')
+    != js('lib/jquery')
+  body.appoints-application
+    div.container
+      div.content.span4.offset4
+        h2 Install Appoints
+        p 
+          | Before you can use this application, there has to be an application administrator. 
+          | Please create your application administrator with the form below. 
+
+        if errors
+          div.alert.alert-error
+            | One or more errors occurred:
+            ul
+              each err in errors
+                li= err
+        form.form(action="install", method="POST")
+          fieldset
+          
+            div.control-group
+              label.control-label(for="email") Email
+              div.controls
+                input#email(required, type="email", name="email")
+
+            div.control-group
+              label.control-label(for="password") Password
+              div.controls
+                input#password(required, pattern=".{6,31}", type="password", name="password")
+
+            div.control-group
+              label.control-label(for="passwordConfirmation") Confirm password
+               div.controls
+                 input#passwordConfirmation(required, pattern=".{6,31}", type="password", name="passwordConfirmation")
+
+            div.form-actions
+              input.btn.btnsuccess(type="submit", value="Create administrator")
+            

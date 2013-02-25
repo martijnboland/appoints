@@ -9,6 +9,9 @@ module.exports = function(app) {
   // Index
   app.get('/', index.index);
 
+  // Install
+  app.post('/install', index.install);
+
   // Authentication and sign up
   app.post('/api/account/login', passport.authenticate('local'), account.login);
   app.post('/api/account', account.create);
