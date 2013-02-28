@@ -5,11 +5,28 @@ appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authServic
     userId: '',
     name: '',
     isAuthenticated: false,
-    isAdmin: false,
-    nextUrl: ''
+    nextUrl: '',
+    roles: [],
+    isInRole: function(roleName) {
+      if (this.isAuthenticated) {
+        for (var i = 0; i < this.roles.length; i++) {
+          if (this.roles[i] === roleName) {
+            return true;
+          }
+        }      
+      }
+      return false;
+    },
+    isAdmin: function() { 
+      return this.isInRole('admin');
+    },
+    isCustomer: function() {
+      return this.isInRole('customer');
+    }
   };
 
   function Session() {
+
     // always start with a default instance.
     return angular.copy(defaultSession, this);
   }
@@ -23,11 +40,13 @@ appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authServic
           currentSession.userId = result.userId;
           currentSession.name = result.name;
           currentSession.isAuthenticated = true;
+          currentSession.roles = result.roles;
         }
         else {
           currentSession.userId = '';
           currentSession.name = '';
           currentSession.isAuthenticated = false;
+          currentSession.roles = [];
         }
         $rootScope.$broadcast('event:currentSessionChanged', currentSession);
         if (callback !== undefined) {

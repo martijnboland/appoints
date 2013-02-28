@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 var ROLES = {
   admin: 'admin',
-  user: 'user'
+  customer: 'customer'
 };
 
 var UserSchema = new Schema({
@@ -18,7 +18,7 @@ var UserSchema = new Schema({
   passwordHash: { type: String, required: true },
   isPending: { type: Boolean, default: true },
   isActive: { type: Boolean, default: true },
-  roles: { type: [String], default: [ROLES.user]}
+  roles: { type: [String], default: [ROLES.customer]}
 });
 
 UserSchema.virtual('password')
@@ -83,6 +83,10 @@ UserSchema.static('authenticate', function(userId, password, callback) {
         return callback(null, user);
       });
     });
+});
+
+UserSchema.static('allRoles', function () {
+  return ROLES;
 });
 
 module.exports = mongoose.model('User', UserSchema);

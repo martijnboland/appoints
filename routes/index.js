@@ -29,7 +29,7 @@ exports.install = function(req, res) {
       user.name = 'Administrator'
       user.provider = 'local';
       user.userId = req.body.email;
-      user.roles = ['admin'];
+      user.roles = [User.allRoles().admin];
       user.isPending = false;
       user.save(function(err, user) {
         if (err) {

@@ -6,12 +6,22 @@
         <span class="icon-bar" />
         <span class="icon-bar" />
       </a>
-      <a class="brand" href="/">{{appName}}</a>
+      <a class="brand" href="/">Appoints</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li ng-class="{active: routeIs('/')}"><a href="/">Home</a></li>
-          <li ng-class="{active: routeIs('/appointments')}" ng-show='user.isAuthenticated'><a href="/appointments">Appointments</a></li>
-          <li ng-class="{active: routeIs('/about')}"><a href="/about">About</a></li>
+          <li ng-show='user.isAdmin()' class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Manage
+            <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="/manage/customers">Customers</a></li>
+              <li><a href="/manage/services">Services</a></li>
+              <li><a href="/manage/employees">Employees</a></li>
+              <li><a href="/manage/timeslots">Timeslots</a></li>
+            </ul>
+          </li>
+          <li ng-class="{active: routeIs('/appointments')}" ng-show='user.isCustomer()'><a href="/appointments">Appointments</a></li>
         </ul>
 
         <ul class="nav pull-right" ng-show='!user.isAuthenticated'>

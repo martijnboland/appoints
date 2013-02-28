@@ -46,7 +46,8 @@ exports.me = function(req, res) {
       "userId": req.user.userId, 
       "name": req.user.name, 
       "email": req.user.email, 
-      "provider": req.user.provider });
+      "provider": req.user.provider,
+      "roles": req.user.roles });
   }
   res.send('200', {
     "isAuthenticated": false,
