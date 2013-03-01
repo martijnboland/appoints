@@ -18,8 +18,8 @@ app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
+  app.use(express.static(path.join(__dirname, '../app')));
   app.use(require('connect-assets')({ src: 'app' }));
-  app.use(express.static(path.join(__dirname, 'app')));
   app.use(express.favicon());
   app.use(express.bodyParser());
   app.use(express.cookieParser('raahhh raahhh'));
