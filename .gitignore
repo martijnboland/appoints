@@ -1,4 +1,4 @@
 .DS_Store
 node_modules
 builtAssets
-config/environment.js
+server/config/environment.js
