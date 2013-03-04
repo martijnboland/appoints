@@ -1,4 +1,4 @@
-doctype 5
+!!! 5
 html(ng-app="appointsApp")
   head
     title(ng-bind-template="Appoints - {{pageTitle}}")
@@ -17,3 +17,4 @@ html(ng-app="appointsApp")
         p &copy; 2012-2013
 
     != js('all')
+    != js('lib/i18n/angular-locale_' + i18n.lng().toLowerCase())

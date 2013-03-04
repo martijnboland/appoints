@@ -6,13 +6,17 @@ var express = require('express')
   , path = require('path')
   , env = require('./config/environment')
   , mongoose = require('mongoose')
-  , passport = require('passport');
+  , passport = require('passport')
+  , i18n = require('i18next');
 
 var app = express();
 
 env.configure(app, express);
 
 require('./config/passport')();
+
+i18n.init({ fallbackLng: env.settings.defaultLanguage });
+i18n.registerAppHelper(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -27,6 +31,7 @@ app.configure(function(){
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(app.router);
+  app.use(i18n.handle);
 });
 
 require('./config/routes')(app);

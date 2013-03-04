@@ -6,7 +6,8 @@ var settings = {
       host: 'localhost'
     }
   },
-  authProviders: {}
+  authProviders: {},
+  defaultLanguage: 'en-US'
 }
 
 exports.settings = settings;

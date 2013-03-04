@@ -10,8 +10,10 @@ appointsApp.config([
   '$routeProvider',
   '$locationProvider',
   '$httpProvider',
+  '$localeProvider',
+  function ($routeProvider, $locationProvider, $httpProvider, $localeProvider) {
 
-  function ($routeProvider, $locationProvider, $httpProvider) {
+    console.log($localeProvider.$get().id);
 
     // List of routes of the application
     $routeProvider
