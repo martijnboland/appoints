@@ -1,0 +1,19 @@
+{
+  "app": {
+    "name": "Appoints"
+  },
+  "navbar": {
+    "home": "Home",
+    "manage": {
+      "index": "Manage",
+      "customers": "Customers",
+      "services": "Services",
+      "employees": "Employees",
+      "timeslots": "Timeslots"    
+    },
+    "appointments": "Appointments",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register"
+  }
+}

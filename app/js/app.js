@@ -13,7 +13,13 @@ appointsApp.config([
   '$localeProvider',
   function ($routeProvider, $locationProvider, $httpProvider, $localeProvider) {
 
-    console.log($localeProvider.$get().id);
+    i18n.init({
+      lng: $localeProvider.$get().id,
+      fallbackLng: 'en',
+      dynamicLoad: true,
+      resGetPath: 'locales/resources.json?lng=__lng__&ns=__ns__',
+      debug: true
+    });
 
     // List of routes of the application
     $routeProvider
