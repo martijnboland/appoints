@@ -14,7 +14,7 @@ describe('NavbarController', function() {
 
     $httpBackend.whenGET('/api/account/me').respond(testUser);
     $httpBackend.whenGET('/api/account/logout').respond('logged out successfully');
-
+    $httpBackend.whenGET('/partials/home.html').respond('home');
     $controller('NavbarController', {$scope: scope = $rootScope});
     
     $httpBackend.flush();

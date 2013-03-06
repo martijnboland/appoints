@@ -6,37 +6,37 @@
         <span class="icon-bar" />
         <span class="icon-bar" />
       </a>
-      <a class="brand" href="/">Appoints</a>
+      <a class="brand" href="/" translate>app.name</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li ng-show='user.isAdmin()' class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" translate="navbar.manage">
             Manage
             <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="/manage/customers">Customers</a></li>
-              <li><a href="/manage/services">Services</a></li>
-              <li><a href="/manage/employees">Employees</a></li>
-              <li><a href="/manage/timeslots">Timeslots</a></li>
+              <li><a href="/manage/customers" translate>navbar.manage.customers</a></li>
+              <li><a href="/manage/services" translate>navbar.manage.services</a></li>
+              <li><a href="/manage/employees" translate>navbar.service.employees</a></li>
+              <li><a href="/manage/timeslots" translate>navbar.service.timeslots</a></li>
             </ul>
           </li>
-          <li ng-class="{active: routeIs('/appointments')}" ng-show='user.isCustomer()'><a href="/appointments">Appointments</a></li>
+          <li ng-class="{active: routeIs('/appointments')}" ng-show='user.isCustomer()'><a href="/appointments" translate>navbar.appointments</a></li>
         </ul>
 
         <ul class="nav pull-right" ng-show='!user.isAuthenticated'>
           <li ng-class="{active: routeIs('/login')}">
-            <a href="/login">Login</a>
+            <a href="/login" translate>navbar.login</a>
           </li>
           <li ng-class="{active: routeIs('/register')}">
-            <a href="/register">Register</a>
+            <a href="/register" translate>navbar.register</a>
           </li>
         </ul>
 
         <ul class="nav pull-right" ng-show='user.isAuthenticated'>
           <li><p class="navbar-text">Logged in as {{user.name}}</p></li>
           <li>
-            <a href="#" ng-click='logout()'>Logout</a>
+            <a href="#" ng-click='logout()' translate>navbar.logout</a>
           </li>
         </ul>
 

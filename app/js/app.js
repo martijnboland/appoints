@@ -2,7 +2,8 @@
 // Declare application level module which depends on additional filters and services (most of them are custom)
 var appointsApp = angular.module('appointsApp', [
   'appoints.infrastructure',
-  'appoints.authevents'
+  'appoints.authevents',
+  'appoints.localization'
 ]);
 
 // Configure application $route, $location and $http services.
@@ -10,16 +11,7 @@ appointsApp.config([
   '$routeProvider',
   '$locationProvider',
   '$httpProvider',
-  '$localeProvider',
-  function ($routeProvider, $locationProvider, $httpProvider, $localeProvider) {
-
-    i18n.init({
-      lng: $localeProvider.$get().id,
-      fallbackLng: 'en',
-      dynamicLoad: true,
-      resGetPath: 'locales/resources.json?lng=__lng__&ns=__ns__',
-      debug: true
-    });
+  function ($routeProvider, $locationProvider, $httpProvider) {
 
     // List of routes of the application
     $routeProvider
