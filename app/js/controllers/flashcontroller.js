@@ -11,6 +11,7 @@ appointsApp.controller('FlashController', ['$scope', 'flash', function FlashCont
 
   $scope.$on('event:flash.clear', function() {
     $scope.flashMessages = [];
+    $scope.$apply();
   });
 
 }]);

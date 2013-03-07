@@ -14,6 +14,7 @@
     "appointments": "Appointments",
     "login": "Login",
     "logout": "Logout",
-    "register": "Register"
+    "register": "Register",
+    "loggedinas": "Logged in as"
   }
 }

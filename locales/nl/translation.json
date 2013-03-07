@@ -1,0 +1,20 @@
+{
+  "app": {
+    "name": "Appoints"
+  },
+  "navbar": {
+    "home": "Home",
+    "manage": {
+      "index": "Beheer",
+      "customers": "Klanten",
+      "services": "Diensten",
+      "employees": "Medewerkers",
+      "timeslots": "Tijdsdelen"    
+    },
+    "appointments": "Afspraken",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "register": "Aanmelden",
+    "loggedinas": "Ingelogd als"
+  }
+}
