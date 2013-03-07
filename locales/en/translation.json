@@ -16,5 +16,16 @@
     "logout": "Logout",
     "register": "Register",
     "loggedinas": "Logged in as"
+  },
+  "errors": {
+    "404": "That page could not be found"
+  },
+  "home": {
+    "title": "Home",
+    "content": "Home page content"
+  },
+  "login": {
+    "existing": "To get started, login with one of your existing accounts",
+    "local": "Or login with you local account"
   }
 }
