@@ -20,8 +20,6 @@ i18n.init({
   ignoreRoutes: ['img/', 'partials/', 'css/', 'js/'],
   resGetPath: 'locales/__lng__/__ns__.json'
 });
-i18n.registerAppHelper(app);
-i18n.serveDynamicResources(app);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -38,6 +36,9 @@ app.configure(function(){
   app.use(i18n.handle);
   app.use(app.router);
 });
+
+i18n.registerAppHelper(app);
+i18n.serveDynamicResources(app);
 
 require('./config/routes')(app);
 
