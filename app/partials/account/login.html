@@ -24,19 +24,19 @@
           <form nonvalidate name="form" class="form">
             <fieldset>
               <div class="control-group">
-                <label for="email" class="control-label"><strong>Email</strong></label>
+                <label for="email" class="control-label" translate>login.email</label>
                 <div class="controls">
                   <input id="email" required ng-model="user.email" type="email" name="email"/><span ng-hide="form.email.$invalid" class="help-inline"><i class="icon-ok"></i></span>
                 </div>
               </div>
               <div class="control-group">
-                <label for="password" class="control-label"><strong>Password</strong></label>
+                <label for="password" class="control-label"translate>login.password</label>
                 <div class="controls">
                   <input id="password" required pattern=".{6,31}" ng-model="user.password" type="password" name="password"/>
                 </div>
               </div>
               <div class="form-actions">
-                <input type="submit" ng-click="login(user)" ng-disabled="form.$invalid || WaitText" value="{{WaitText || 'Login'}}" class="btn btn-success"/>
+                <input type="submit" ng-click="login(user)" ng-disabled="form.$invalid" class="btn btn-success" value="login.login" translate-attr="value"></input>
               </div>
             </fieldset>
           </form>

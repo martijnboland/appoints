@@ -12,3 +12,19 @@ appointsApp.directive('translate', ['i18n', function(i18n) {
     }
   }
 }]);
+
+appointsApp.directive('translateAttr', ['i18n', function(i18n) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      var attrToTranslate = attrs.translateAttr;
+      if (attrToTranslate !== '') {
+        var attributes = attrToTranslate.replace(/\s+/g, '').split(',');
+        for (var i = 0; i < attributes.length; i++) {
+          var key = element.attr(attributes[i]);
+          element.attr(attributes[i], i18n.t(key));
+        }
+      }
+    }
+  }
+}]);
