@@ -10,15 +10,15 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li ng-show='user.isAdmin()' class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" translate="navbar.manage">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" translate="navbar.manage.index">
             Manage
             <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><a href="/manage/customers" translate>navbar.manage.customers</a></li>
               <li><a href="/manage/services" translate>navbar.manage.services</a></li>
-              <li><a href="/manage/employees" translate>navbar.service.employees</a></li>
-              <li><a href="/manage/timeslots" translate>navbar.service.timeslots</a></li>
+              <li><a href="/manage/employees" translate>navbar.manage.employees</a></li>
+              <li><a href="/manage/timeslots" translate>navbar.manage.timeslots</a></li>
             </ul>
           </li>
           <li ng-class="{active: routeIs('/appointments')}" ng-show='user.isCustomer()'><a href="/appointments" translate>navbar.appointments</a></li>
