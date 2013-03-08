@@ -1,49 +1,48 @@
-<div ng-init="$root.pageTitle='Register'">
-  <section ng-controller="AccountController">
-    <div class="row">
-      <div ng-show="FormErrors" class="alert alert-error">
-        <ul>
-          <li ng-repeat="msg in ErrMsgs" ng-bind-html-unsafe="msg"></li>
-        </ul>
-      </div>
-      <div class="span6 offset6">
-        <header>
-          <h4>Register for a new account</h4>
-        </header>
-        <div class="form">
-          <form nonvalidate name="form" class="form-horizontal">
-            <fieldset>
-              <div class="control-group">
-                <label for="name" class="control-label"><strong>Name</strong></label>
-                <div class="controls">
-                  <input id="name" required ng-model="user.name" type="text" name="name"/><span ng-hide="form.name.$invalid" class="help-inline"><i class="icon-ok"></i></span>
-                </div>
+<h2 translate pagetitle>register.title</h2>
+<section ng-controller="AccountController">
+  <div class="row">
+    <div ng-show="FormErrors" class="alert alert-error">
+      <ul>
+        <li ng-repeat="msg in ErrMsgs" ng-bind-html-unsafe="msg"></li>
+      </ul>
+    </div>
+    <div class="span6 offset6">
+      <header>
+        <h4 translate>register.instruction</h4>
+      </header>
+      <div class="form">
+        <form nonvalidate name="form" class="form-horizontal">
+          <fieldset>
+            <div class="control-group">
+              <label for="name" class="control-label" translate>register.name</label>
+              <div class="controls">
+                <input id="name" required ng-model="user.name" type="text" name="name"/><span ng-hide="form.name.$invalid" class="help-inline"><i class="icon-ok"></i></span>
               </div>
-              <div class="control-group">
-                <label for="email" class="control-label"><strong>Email</strong></label>
-                <div class="controls">
-                  <input id="email" required ng-model="user.email" type="email" name="email"/><span ng-hide="form.email.$invalid" class="help-inline"><i class="icon-ok"></i></span>
-                </div>
+            </div>
+            <div class="control-group">
+              <label for="email" class="control-label" translate>register.email</label>
+              <div class="controls">
+                <input id="email" required ng-model="user.email" type="email" name="email"/><span ng-hide="form.email.$invalid" class="help-inline"><i class="icon-ok"></i></span>
               </div>
-              <div class="control-group">
-                <label for="password" class="control-label"><strong>Password</strong></label>
-                <div class="controls">
-                  <input id="password" required pattern=".{6,31}" ng-model="user.password" type="password" name="password"/>
-                </div>
+            </div>
+            <div class="control-group">
+              <label for="password" class="control-label" translate>register.password</label>
+              <div class="controls">
+                <input id="password" required pattern=".{6,31}" ng-model="user.password" type="password" name="password"/>
               </div>
-              <div class="control-group">
-                <label for="passwordconfirmation" class="control-label"><strong>Confirm password</strong></label>
-                <div class="controls">
-                  <input id="passwordconfirmation" required pattern=".{6,31}" ng-model="user.passwordConfirmation" type="password" name="passwordconfirmation"/>
-                </div>
+            </div>
+            <div class="control-group">
+              <label for="passwordconfirmation" class="control-label" translate>register.passwordconfirmation</label>
+              <div class="controls">
+                <input id="passwordconfirmation" required pattern=".{6,31}" ng-model="user.passwordConfirmation" type="password" name="passwordconfirmation"/>
               </div>
-              <div class="form-actions">
-                <input type="submit" ng-click="register(user)" ng-disabled="form.$invalid" value="Register" class="btn btn-success"/>
-              </div>
-            </fieldset>
-          </form>
-        </div>
+            </div>
+            <div class="form-actions">
+              <input type="submit" ng-click="register(user)" ng-disabled="form.$invalid" value="register.register" translate-attr="value" class="btn btn-success"/>
+            </div>
+          </fieldset>
+        </form>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>

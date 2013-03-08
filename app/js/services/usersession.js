@@ -76,7 +76,7 @@ appointsApp.factory('usersession', ['$rootScope', '$http', '$route', 'authServic
     },
     function (result) {
       // Error
-      flash.add('Unable to login', 'error');
+      flash.add('login.error', 'error');
       return $q.reject(result);
     });
 

@@ -1,47 +1,46 @@
-<div ng-init="$root.pageTitle='Login'">
-  <section ng-controller="AccountController">
-    <div class="row">
-      <div ng-show="FormErrors" class="alert alert-error">
-        <ul>
-          <li ng-repeat="msg in ErrMsgs" ng-bind-html-unsafe="msg"></li>
-        </ul>
-      </div>
-      <div class="span6">
-        <header>
-          <h4 translate>login.existing</h4>
-        </header>
-        <ul class="inline">
-          <li ng-repeat="p in authProviders">
-            <button ng-click="authenticate(p)" class="btn"><img ng-src="/img/auth/{{p}}.png"/></button>
-          </li>
-        </ul>
-      </div>
-      <div class="span6">
-        <header>
-          <h4 translate>login.local</h4>
-        </header>
-        <div class="password-form form-horizontal">
-          <form nonvalidate name="form" class="form">
-            <fieldset>
-              <div class="control-group">
-                <label for="email" class="control-label" translate>login.email</label>
-                <div class="controls">
-                  <input id="email" required ng-model="user.email" type="email" name="email"/><span ng-hide="form.email.$invalid" class="help-inline"><i class="icon-ok"></i></span>
-                </div>
+<h2 translate pagetitle>login.title</h2>
+<section ng-controller="AccountController">
+  <div class="row">
+    <div ng-show="FormErrors" class="alert alert-error">
+      <ul>
+        <li ng-repeat="msg in ErrMsgs" ng-bind-html-unsafe="msg"></li>
+      </ul>
+    </div>
+    <div class="span6">
+      <header>
+        <h4 translate>login.existing</h4>
+      </header>
+      <ul class="inline">
+        <li ng-repeat="p in authProviders">
+          <button ng-click="authenticate(p)" class="btn"><img ng-src="/img/auth/{{p}}.png"/></button>
+        </li>
+      </ul>
+    </div>
+    <div class="span6">
+      <header>
+        <h4 translate>login.local</h4>
+      </header>
+      <div class="password-form form-horizontal">
+        <form nonvalidate name="form" class="form">
+          <fieldset>
+            <div class="control-group">
+              <label for="email" class="control-label" translate>login.email</label>
+              <div class="controls">
+                <input id="email" required ng-model="user.email" type="email" name="email"/><span ng-hide="form.email.$invalid" class="help-inline"><i class="icon-ok"></i></span>
               </div>
-              <div class="control-group">
-                <label for="password" class="control-label"translate>login.password</label>
-                <div class="controls">
-                  <input id="password" required pattern=".{6,31}" ng-model="user.password" type="password" name="password"/>
-                </div>
+            </div>
+            <div class="control-group">
+              <label for="password" class="control-label"translate>login.password</label>
+              <div class="controls">
+                <input id="password" required pattern=".{6,31}" ng-model="user.password" type="password" name="password"/>
               </div>
-              <div class="form-actions">
-                <input type="submit" ng-click="login(user)" ng-disabled="form.$invalid" class="btn btn-success" value="login.login" translate-attr="value"></input>
-              </div>
-            </fieldset>
-          </form>
-        </div>
+            </div>
+            <div class="form-actions">
+              <input type="submit" ng-click="login(user)" ng-disabled="form.$invalid" class="btn btn-success" value="login.login" translate-attr="value"></input>
+            </div>
+          </fieldset>
+        </form>
       </div>
     </div>
-  </section>  
-</div>
+  </div>
+</section>  

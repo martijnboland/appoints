@@ -1,4 +1,4 @@
-appointsApp.factory('flash', ['$rootScope', function ($rootScope) {
+appointsApp.factory('flash', ['$rootScope', 'i18n', function ($rootScope, i18n) {
   var flashes = [];
 
   return {
@@ -7,8 +7,10 @@ appointsApp.factory('flash', ['$rootScope', function ($rootScope) {
       // default value for the level parameter
       level = level || 'info';
 
+      var translatedMessage = i18n.t(message);
+
       var flash = {
-        message: message,
+        message: translatedMessage,
         level: level
       };
       flashes.push(flash);

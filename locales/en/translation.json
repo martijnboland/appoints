@@ -25,7 +25,32 @@
     "content": "Home page content"
   },
   "login": {
+    "title": "Login",
     "existing": "To get started, login with one of your existing accounts",
-    "local": "Or login with you local account"
+    "local": "Or login with you local account",
+    "email": "E-mail",
+    "password": "Password",
+    "login": "Login",
+    "error": "Invalid e-mail or password"
+  },
+  "logout": {
+    "success": "Logged out successfully"
+  },
+  "register": {
+    "title": "Register for a new account",
+    "instruction": "Enter your information in the form below. You will receive an email with a confirmation link. After visiting the confirmation link, your account is activated.",
+    "name": "Your name",
+    "email": "Your e-mail address",
+    "password": "Choose a password",
+    "passwordconfirmation": "Confirm password",
+    "register": "Register",
+    "success": "You have registered successfully. Please check your email to confirm this registration."
+  },
+  "registrationconfirmation": {
+    "title": "Registration successfull",
+    "content": "You can now log in with the username and password you have created for this site."
+  },
+  "appointments": {
+    "title": "Appointments"
   }
 }

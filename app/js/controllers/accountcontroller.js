@@ -8,7 +8,7 @@ appointsApp.controller('AccountController',
   $scope.register = function (userData) {
     $http.post('/api/account', userData)
       .success(function(data) {
-        flash.add('You have registered successfully. Please check your email to confirm this registration.', 'success');
+        flash.add('register.success', 'success');
         $location.url('/');   
       });
   }

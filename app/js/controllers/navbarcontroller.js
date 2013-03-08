@@ -9,7 +9,7 @@ appointsApp.controller('NavbarController', ['$scope', '$location', 'usersession'
 
   $scope.logout = function() {
     usersession.logout(function() {
-      flash.add('Logged out successfully', 'success');
+      flash.add('logout.success', 'success');
       $location.url('/');
     });
   }

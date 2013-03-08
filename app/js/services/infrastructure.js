@@ -19,7 +19,7 @@ angular.module('appoints.infrastructure', [])
           }
           else {
             console.log(response.data)
-            flash.add('An unknown error has ocurred', 'error');
+            flash.add('error.unknown', 'error');
           }
           return $q.reject(response);
         });

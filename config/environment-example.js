@@ -7,7 +7,7 @@ var settings = {
     }
   },
   authProviders: {},
-  defaultLanguage: 'en-US'
+  defaultLanguage: 'en'
 }
 
 exports.settings = settings;
