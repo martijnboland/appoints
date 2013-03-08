@@ -18,15 +18,15 @@ describe('pagetitle-directive', function() {
 
   describe('pagetitle', function() {
     
-    it('should update the pageTitle variable in the rootScope with the value of the inner text.', inject(function () {
+    it('should update the pageTitle variable in the rootScope with the value of the inner text.', function () {
       var elm = compile( '<div pagetitle>PageTitle</div>' )( scope );
       expect(scope.pageTitle).toBe('PageTitle');
-    }));
+    });
 
-    it('should update the pageTitle variable in the rootScope with the translated value of the inner text.', inject(function () {
+    it('should update the pageTitle variable in the rootScope with the translated value of the inner text.', function () {
       var elm = compile( '<div translate pagetitle>page.title</div>' )( scope );
       expect(scope.pageTitle).toBe('TranslatedPageTitle');
-    }));    
+    });    
 
   });
 
